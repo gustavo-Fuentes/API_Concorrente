@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 volume = 0
 
-""" @app.route('/tanque_EtOH', methods=['POST'])
+@app.route('/tanque_EtOH', methods=['POST'])
 def tanque_EtOH():
     data = request.get_json()
     var = data.get('volume', None)
@@ -22,7 +22,7 @@ def tanque_EtOH():
         'volume': volume
     }
     
-    return resposta """
+    return resposta 
 
 
 
@@ -47,12 +47,14 @@ class EtOH(threading.Thread): #
             }
             response = requests.post('https://cc7261-app-modulo-decantador.herokuapp.com/', json = request, headers = {"Content-Type": "application/json"}).json()
             
-            time.sleep(3)
+            volume = response.get('etoh', None)
+            
+            """ time.sleep(3)
             volume = response['etoh'] * 0.99 # ver com o tomas o 'EtOH'
             request = {
                 'etoh': volume
             }
-            #requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) # manda pro simões, ele tem que fazer um post só pra receber o etoh
+            requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) """ # manda pro simões, ele tem que fazer um post só pra receber o etoh
             volume = 0
 
 
