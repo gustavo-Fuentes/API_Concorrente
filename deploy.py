@@ -48,7 +48,7 @@ class EtOH(threading.Thread): #
             response = requests.post('https://programacao--concorrente.herokuapp.com/decantador', json = request, headers = {"Content-Type": "application/json"}).json()
             
             time.sleep(3)
-            volume = response['EtOH'] * 0.99 # ver com o tomas o EtOH
+            volume = response['etoh'] * 0.99 # ver com o tomas o 'EtOH'
             request = {
                 'etoh': volume
             }
