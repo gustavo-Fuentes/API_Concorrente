@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 volume = 0
 
-@app.route('/tanque_EtOH', methods=['POST'])
+""" @app.route('/tanque_EtOH', methods=['POST'])
 def tanque_EtOH():
     data = request.get_json()
     var = data.get('volume', None)
@@ -22,7 +22,7 @@ def tanque_EtOH():
         'volume': volume
     }
     
-    return resposta
+    return resposta """
 
 
 
