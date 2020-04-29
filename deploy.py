@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 volume = 0
 
-@app.route('/tanque_EtOH', methods=['POST'])
+@app.route('/', methods=['POST'])
 def tanque_EtOH():
     data = request.get_json()
     var = data.get('etoh', None)
@@ -27,7 +27,7 @@ def tanque_EtOH():
 
 
 
-@app.route('/tanque_EtOH', methods=['GET']) # O GET  mostra na tela
+@app.route('/', methods=['GET']) # O GET  mostra na tela
 def getVolume():
     global volume
     response = {
