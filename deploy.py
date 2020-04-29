@@ -45,7 +45,7 @@ class EtOH(threading.Thread): #
             request = {
                 'EtOH': volume
             }
-            response = requests.post('URL-thomas', json = request, headers = {"Content-Type": "application/json"}).json()
+            response = requests.post('https://programacao--concorrente.herokuapp.com/decantador', json = request, headers = {"Content-Type": "application/json"}).json()
             
             time.sleep(3)
             volume = response['EtOH'] * 0.99 # ver com o tomas o EtOH
@@ -62,9 +62,6 @@ class EtOH(threading.Thread): #
 
 def creat_app():
     global app
-    print('starting logic thread...')
     tanque = EtOH()
     tanque.start()
-    print('logic thread started!')
-    print('starting flask server')
     return app
