@@ -31,7 +31,7 @@ def tanque_EtOH():
 def getVolume():
     global volume
     resposta = {
-        'EtOH': volume
+        'etoh': volume
     }
     return resposta
 
@@ -43,14 +43,14 @@ class EtOH(threading.Thread): #
         while True:
             global volume
             request = {
-                'EtOH': volume
+                'etoh': volume
             }
             response = requests.post('https://programacao--concorrente.herokuapp.com/decantador', json = request, headers = {"Content-Type": "application/json"}).json()
             
             time.sleep(3)
             volume = response['EtOH'] * 0.99 # ver com o tomas o EtOH
             request = {
-                'EtOH': volume
+                'etoh': volume
             }
             requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) # mandar pro simões, simões tem que fazer um post só pra receber o etoh
             volume = 0
