@@ -52,11 +52,19 @@ class EtOH(threading.Thread): #
             request = {
                 'EtOH': volume
             }
-            requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) # mandar pro simões
+            requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) # mandar pro simões, simões tem que fazer um post só pra receber o etoh
             volume = 0
 
 
 
-if __name__ == '__main__':
-    app.run()
-    
+#if __name__ == '__main__':
+#    app.run()
+
+def creat_app():
+    global app
+    print('starting logic thread...')
+    sec = Secador()
+    sec.start()
+    print('logic thread started!')
+    print('starting flask server')
+    return app
