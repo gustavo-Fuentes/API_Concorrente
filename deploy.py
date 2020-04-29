@@ -10,7 +10,7 @@ volume = 0
 @app.route('/tanque_EtOH', methods=['POST'])
 def tanque_EtOH():
     data = request.get_json()
-    var = data.get('volume', None)
+    var = data.get('etoh', None)
     
     
     
@@ -18,22 +18,22 @@ def tanque_EtOH():
     
     volume += var * 0.99 
     
-    resposta = {
-        'volume': volume
+    response = {
+        'status_code': 200
     }
-    
-    return resposta 
+    time.sleep(3)
+    return response 
 
 
 
 
-@app.route('/tanque_EtOH', methods=['GET'])
+@app.route('/tanque_EtOH', methods=['GET']) # O GET  mostra na tela
 def getVolume():
     global volume
-    resposta = {
+    response = {
         'etoh': volume
     }
-    return resposta
+    return response
 
 class EtOH(threading.Thread): # 
     def __init__(self):
@@ -45,16 +45,8 @@ class EtOH(threading.Thread): #
             request = {
                 'etoh': volume
             }
-            response = requests.post('https://cc7261-app-modulo-decantador.herokuapp.com/', json = request, headers = {"Content-Type": "application/json"}).json()
             
-            volume = response.get('etoh', None)
-            
-            """ time.sleep(3)
-            volume = response['etoh'] * 0.99 # ver com o tomas o 'EtOH'
-            request = {
-                'etoh': volume
-            }
-            requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) """ # manda pro simões, ele tem que fazer um post só pra receber o etoh
+            requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"})# manda pro simões, ele tem que fazer um post só pra receber o etoh
             volume = 0
 
 
