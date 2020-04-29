@@ -63,8 +63,8 @@ class EtOH(threading.Thread): #
 def creat_app():
     global app
     print('starting logic thread...')
-    sec = Secador()
-    sec.start()
+    tanque = EtOH()
+    tanque.start()
     print('logic thread started!')
     print('starting flask server')
     return app
