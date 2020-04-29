@@ -60,7 +60,7 @@ class EtOH(threading.Thread): #
 #if __name__ == '__main__':
 #    app.run()
 
-def creat_app():
+def create_app():
     global app
     tanque = EtOH()
     tanque.start()
