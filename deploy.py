@@ -45,14 +45,14 @@ class EtOH(threading.Thread): #
             request = {
                 'etoh': volume
             }
-            response = requests.post('https://programacao--concorrente.herokuapp.com/decantador', json = request, headers = {"Content-Type": "application/json"}).json()
+            response = requests.post('https://cc7261-app-modulo-decantador.herokuapp.com/', json = request, headers = {"Content-Type": "application/json"}).json()
             
             time.sleep(3)
             volume = response['etoh'] * 0.99 # ver com o tomas o 'EtOH'
             request = {
                 'etoh': volume
             }
-            requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) # mandar pro simões, simões tem que fazer um post só pra receber o etoh
+            #requests.post('URL-Simões', json = request, headers = {"Content-Type": "application/json"}) # manda pro simões, ele tem que fazer um post só pra receber o etoh
             volume = 0
 
 
