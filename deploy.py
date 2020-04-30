@@ -43,9 +43,10 @@ class EtOH(threading.Thread): #
         while True:
             global volume
             request = {
-                'etoh': volume
+                "origem": "etoh",
+                "etoh": volume
             }
-            
+            time.sleep(1)
             requests.post('https://destrotrampo.herokuapp.com/naoh-etoh', json = request, headers = {"Content-Type": "application/json"})# manda pro simões, ele tem que fazer um post só pra receber o etoh
             volume = 0
 
