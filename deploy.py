@@ -23,7 +23,7 @@ def tanque_EtOH():
     }
     time.sleep(3)
     
-    print("Volume recebido:", volume)
+    print("Volume recebido:", var)
     return response 
 
 
@@ -45,14 +45,16 @@ class EtOH(threading.Thread): #
     def run(self):
         while True:
             global volume
-            request = {
-                "origem": "etoh",
-                "etoh": volume
-            }
-            #time.sleep(5)
-            requests.post('https://destrotrampo.herokuapp.com/naoh-etoh', json = request, headers = {"Content-Type": "application/json"})# manda pro simões, ele tem que fazer um post só pra receber o etoh
-            print("Volume para o tanque:",volume)
-            volume = 0
+            if volume > 0:
+                
+                request = {
+                    "origem": "etoh",
+                    "etoh": volume
+                }
+                
+                requests.post('https://destrotrampo.herokuapp.com/naoh-etoh', json = request, headers = {"Content-Type": "application/json"})# manda pro simões, ele tem que fazer um post só pra receber o etoh
+                print("Volume para o tanque:",volume)
+                volume = 0
             
 
 
