@@ -21,7 +21,9 @@ def tanque_EtOH():
     response = {
         'status_code': 200
     }
-    #time.sleep(3)
+    time.sleep(3)
+    
+    print("Volume recebido:", volume)
     return response 
 
 
@@ -30,6 +32,7 @@ def tanque_EtOH():
 @app.route('/', methods=['GET']) # O GET  mostra na tela
 def getVolume():
     global volume
+    
     response = {
         'etoh': volume
     }
@@ -48,7 +51,9 @@ class EtOH(threading.Thread): #
             }
             #time.sleep(5)
             requests.post('https://destrotrampo.herokuapp.com/naoh-etoh', json = request, headers = {"Content-Type": "application/json"})# manda pro simões, ele tem que fazer um post só pra receber o etoh
+            print("Volume para o tanque:",volume)
             volume = 0
+            
 
 
 
