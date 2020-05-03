@@ -21,7 +21,7 @@ def tanque_EtOH():
     response = {
         'status_code': 200
     }
-    time.sleep(3)
+    #time.sleep(3)
     return response 
 
 
@@ -46,7 +46,7 @@ class EtOH(threading.Thread): #
                 "origem": "etoh",
                 "etoh": volume
             }
-            time.sleep(5)
+            #time.sleep(5)
             requests.post('https://destrotrampo.herokuapp.com/naoh-etoh', json = request, headers = {"Content-Type": "application/json"})# manda pro simões, ele tem que fazer um post só pra receber o etoh
             volume = 0
 
